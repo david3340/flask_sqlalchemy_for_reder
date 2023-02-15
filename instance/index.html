@@ -13,8 +13,9 @@
 <body>
     <div id="display">
         </div>
-        user Name <input id="stuname">
-        age <input id="agee">
+        name <input id="name">
+        age <input id="age">
+        <button onclick="addname()">add</button>
 
         <script>
             const MY_SERVER = "http://127.0.0.1:5000/student"
@@ -24,12 +25,12 @@
 
             }
             const upduser = (id) => {
-                axios.put(MY_SERVER + "/" + id, { stuname: stuname.value, age: agee.value })
+                axios.put(MY_SERVER + "/" + id, { stuname: name.value, age: age.value })
 
             }
 
-            const adduser=()=>{
-                axios.post(MY_SERVER + "/" + id, { stuname: stuname.value, age: agee.value })
+            const addname=()=>{
+                axios.post(MY_SERVER + "/" + id, { stuname: name.value, age: age.value })
             }
 
             const getData = async () => {
@@ -37,9 +38,9 @@
                 // console.log(res.data)
                 display.innerHTML = res.data.map(usr => `<div>
     <button onclick='delname(${usr.id}')>del</button>
-    <button onclick='upduser(${usr.id}')>del</button>
-    username:${usr.stuname}
-    age: ${usr.agee}
+    <button onclick='upduser(${usr.id}')>upd</button>
+    username:${usr.name}
+    age: ${usr.age}
     </div>`).join(" ")
 
 
