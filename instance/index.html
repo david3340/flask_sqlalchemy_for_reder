@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    <div="display">
+        </div>
+        user Name <input id="stuname">
+        age <input id="agee">
+
+        <script>
+            const MY_SERVER = "http://127.0.0.1:5000/student"
+
+            const delname = (id) => {
+                axios.delete(MY_SERVER + "/" + id)
+
+            }
+            const upduser = (id) => {
+                axios.put(MY_SERVER + "/" + id, { stuname: stuname.value, age: agee.value })
+
+            }
+
+            const adduser=()=>{
+                axios.post(MY_SERVER + "/" + id, { stuname: stuname.value, age: agee.value })
+            }
+
+            const getData = async () => {
+                const res = await axios.get(MY_SERVER)
+                // console.log(res.data)
+                display.innerHTML = res.data.map(usr => `<div>
+    <button onclick='delname(${usr.id}')>del</button>
+    <button onclick='upduser(${usr.id}')>del</button>
+    username:${usr.stuname}
+    age: ${usr.agee}
+    </div>`).join(" ")
+
+
+            }
+            getData()
+        </script>
+
+
+</body>
+
+</html>
