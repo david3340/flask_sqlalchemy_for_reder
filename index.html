@@ -12,31 +12,34 @@
 
 <body>
     <div id="display">
-        </div>
-        name <input id="name">
-        age <input id="age">
-        <button class ="btn btn-success" onclick="addname()">add</button>
+    </div>
+    name <input id="name">
+    age <input id="age">
+    <button class="btn btn-success" onclick="addname()">add</button>
 
-        <script>
-            const MY_SERVER = "https://secc.onrender.com/student"
+    <script>
+        const MY_SERVER = "https://secc.onrender.com/student"
 
-            const delname = (id) => {
-                axios.delete(MY_SERVER + "/" + id)
+        const delname = (id) => {
+            axios.delete(MY_SERVER + "/" + id)
+            getData()
 
-            }
-            const upduser = (id) => {
-                axios.put(MY_SERVER + "/" + id, { stuname: name.value, age: age.value })
+        }
+        const upduser = (id) => {
+            axios.put(MY_SERVER + "/" + id, { stuname: name.value, age: age.value })
+            getData()
 
-            }
+        }
 
-            const addname=()=>{
-                axios.post(MY_SERVER + "/" + id, { stuname: name.value, age: age.value })
-            }
+        const addname = () => {
+            axios.post(MY_SERVER + "/" + id, { stuname: name.value, age: age.value })
+            getData()
+        }
 
-            const getData = async () => {
-                const res = await axios.get(MY_SERVER)
-                // console.log(res.data)
-                display.innerHTML = res.data.map(usr => `<div>
+        const getData = async () => {
+            const res = await axios.get(MY_SERVER)
+            // console.log(res.data)
+            display.innerHTML = res.data.map(usr => `<div>
     <button onclick='delname(${usr.id}')>del</button>
     <button onclick='upduser(${usr.id}')>upd</button>
     username:${usr.name}
@@ -44,9 +47,9 @@
     </div>`).join(" ")
 
 
-            }
-            getData()
-        </script>
+        }
+        getData()
+    </script>
 
 
 </body>
