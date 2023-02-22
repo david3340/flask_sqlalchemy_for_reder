@@ -44,7 +44,7 @@
   tableHTML += res.data.map(usr => `<tr>
       <td>${usr.name}</td>
       <td>${usr.age}</td>
-      <td><button class="btn btn-danger" onClick='delUser(${usr.id})'>delete</button></td>
+      <td><button class="btn btn-danger" onClick='delname(${usr.id})'>delete</button></td>
       <td><button class="btn btn-primary" onClick='updUser(${usr.id})'>update</button></td>
     </tr>`).join(" ");
   tableHTML += "</tbody></table>";
