@@ -29,7 +29,7 @@
 
         }
         const upduser = (id) => {
-            axios.put(MY_SERVER + "/" + id, { stuname: sname.value, age: age.value })
+            axios.put(MY_SERVER + "/" + id, { name: sname.value, age: age.value })
             getData();
 
         }
