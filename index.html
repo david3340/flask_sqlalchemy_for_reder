@@ -22,12 +22,12 @@
 
         const delname = (id) => {
             axios.delete(MY_SERVER + "/" + id)
-            getData()
+            getData();
 
         }
         const upduser = (id) => {
             axios.put(MY_SERVER + "/" + id, { stuname: sname.value, age: age.value })
-            getData()
+            getData();
 
         }
 
