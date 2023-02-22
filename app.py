@@ -27,14 +27,14 @@ def add_student():
     student = Student(name=name, age=age)
     db.session.add(student)
     db.session.commit()
-    return jsonify({'id': student.id, 'name': student.name, 'age': student.age}), 201
+    return jsonify({'id': student.id, 'name': student.name, 'age': student.age})
 
 @app.route('/student/<int:student_id>', methods=['GET'])
 
 def get_student(student_id):
     student = Student.query.get(student_id)
     if not student:
-        return jsonify({'message': 'Student not found'}), 404
+        return jsonify({'message': 'Student not found'})
     return jsonify({'id': student.id, 'name': student.name, 'age': student.age})
 
 @app.route('/student', methods=['GET'])
@@ -51,7 +51,7 @@ def update_student(student_id):
 
     student = Student.query.get(student_id)
     if not student:
-        return jsonify({'message': 'Student not found'}), 404
+        return jsonify({'message': 'Student not found'})
     student.name = request.json.get('name', student.name)
     student.age = request.json.get('age', student.age)
     db.session.commit()
@@ -61,7 +61,7 @@ def update_student(student_id):
 def delete_student(student_id):
     student = Student.query.get(student_id)
     if not student:
-        return jsonify({'message': 'Student not found'}), 404
+        return jsonify({'message': 'Student not found'})
     db.session.delete(student)
     db.session.commit()
     return jsonify({'message': 'Student deleted'})

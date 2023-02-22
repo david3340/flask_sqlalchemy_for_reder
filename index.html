@@ -11,9 +11,8 @@
 </head>
 
 <body>
-    <div id="display">
-    </div>
-    name <input id="name">
+    <div id="display"></div>
+    name <input id="sname">
     age <input id="age">
     <button class="btn btn-success" onclick="addname()">add</button>
 
@@ -26,14 +25,15 @@
 
         }
         const upduser = (id) => {
-            axios.put(MY_SERVER + "/" + id, { stuname: name.value, age: age.value })
+            axios.put(MY_SERVER + "/" + id, { stuname: sname.value, age: age.value })
             getData()
 
         }
 
-        const addname = () => {
-            axios.post(MY_SERVER + "/" + id, { stuname: name.value, age: age.value })
-            getData()
+        const addname = () => { 
+            console.log({ name: sname.value, age: age.value })
+            axios.post(MY_SERVER , { name:sname.value, age:age.value })
+            getData();
         }
 
         const getData = async () => {
